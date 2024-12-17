@@ -125,7 +125,7 @@ window.onload=function(){//write all of our JS in here
 	var nBar = document.getElementById("clip");
 	var sticky = nBar.offsetTop;
 	var fBar = document.getElementById("navLinks");
-	var sticky1 = fBar.offsetTop;
+	var sticky1 = fBar.offsetBottom;
 	function myFunction() {
 	if (window.pageYOffset >= sticky && window.pageYOffset >= sticky1) {
 		nBar.classList.add("sticky");
