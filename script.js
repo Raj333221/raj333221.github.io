@@ -1,5 +1,5 @@
 window.onload=function(){//write all of our JS in here
-	alert("Page is Loaded");}
+	alert("Welcome, this prompt means your browser pluggins are working");}
 	
 	function addStyleSheet(){const el=document.querySelector("link");el.href="style.css";}
 
