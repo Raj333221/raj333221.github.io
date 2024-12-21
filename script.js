@@ -158,38 +158,11 @@ window.onload=function(){//write all of our JS in here
 	// 	};
 	// 	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	// }
-
-	function loadGoogleMapsApi(apiKey) {  
-    return new Promise((resolve, reject) => {  
-        const existingScript = document.getElementById('google-maps-script');  
-
-        if (!existingScript) {  
-            const script = document.createElement('script');  
-            script.id = 'google-maps-script';  
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;  
-            script.async = true;  
-            script.defer = true;  
-            document.body.appendChild(script);  
-            script.onload = resolve;  
-            script.onerror = reject;  
-        } else {  
-            resolve();  
-        }  
-    });  
-}  
-
-function initMap() {  
-    const mapOptions = {  
-        center: { lat: -34.397, lng: 150.644 },  
-        zoom: 8,  
-    };  
-    const map = new google.maps.Map(document.getElementById('map'), mapOptions);  
-}  
-
-// Usage  
-const apiKey = 'YOUR_API_KEY_HERE'; // Replace with your actual API key  
-loadGoogleMapsApi(apiKey).then(initMap).catch(error => console.error('Error loading Google Maps API:', error));
-
+document.addEventListener('DOMContentLoaded', async () => {
+  await customElements.whenDefined('gmpx-store-locator');
+  const locator = document.querySelector('gmpx-store-locator');
+  locator.configureFromQuickBuilder(CONFIGURATION);
+});
 	
 	
 	// function myMap() {
