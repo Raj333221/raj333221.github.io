@@ -1,7 +1,5 @@
 window.onload=function(){//write all of our JS in here
 	alert("Welcome to My Site, under Construction !");};
-
-	import { Loader } from '@googlemaps/js-api-loader';
 	
 	function addStyleSheet(){const el=document.querySelector("link");el.href="style.css";};
 
