@@ -151,10 +151,10 @@ window.onload=function(){//write all of our JS in here
 	
 	function initMap() {
 		var mapProp = {
-			center: new google.maps.LatLng(0.0, 0.0),
+			center: new google.maps.LatLng(19.968545, 73.787522),
 			zoom: 5,
 		};
-		var map = new google.maps.Map(document.getElementById("six"), mapProp);
+		var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 	}
 
 	
