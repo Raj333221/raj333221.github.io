@@ -151,19 +151,14 @@ window.onload=function(){//write all of our JS in here
 
 
 	
-	// function initMap() {
-	// 	var mapProp = {
-	// 		center: new google.maps.LatLng(19.968545, 73.787522),
-	// 		zoom: 5,
-	// 	};
-	// 	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	// }
-document.addEventListener('DOMContentLoaded', async () => {
-  await customElements.whenDefined('gmpx-store-locator');
-  const locator = document.querySelector('gmpx-store-locator');
-  locator.configureFromQuickBuilder(CONFIGURATION);
-});
-	
+	function initMap() {
+		var mapProp = {
+			center: new google.maps.LatLng(19.968545, 73.787522),
+			zoom: 5,
+		};
+		var map = new google.maps.Map(document.getElementById("myMap"), mapProp);
+	}
+
 	
 	// function myMap() {
 	// var mapProp= {
