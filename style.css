@@ -168,7 +168,7 @@ footer:hover{opacity:1;z-index:1;} */
 
 /* Section Bordering */
 #one,#two,#three,#four{position:relative;right:0px;height:100%;width:50%;margin:auto 20px;margin-right:20px;margin-left:20px;padding:auto;border:2px dashed grey;border-radius: 20px 0 20px 0;justify-content:center;overflow:hidden;z-index:0;display:inline-block;}
-#five{position:relative;height:100%;width:100%;margin:auto 20px;margin-right:20px;margin-left:20px;padding:auto;border:2px dashed grey;border-radius: 20px 0 20px 0;justify-content:center;overflow:hidden;z-index:0;display:inline-block;}
+#five{position:relative;height:100%;width:100%;margin:auto 20px;margin-right:20px;margin-left:20px;padding:auto;border:2px dashed grey;border-radius: 20px 0 20px 0;justify-content:center;z-index:0;display:inline-block;}
 #six{position:relative;margin:auto auto;padding:auto;height:500px;width:500px;display:inline-block;border:2px dashed red;border-radius:20px 0 20px 0;}
 
 
