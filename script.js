@@ -154,7 +154,7 @@ window.onload=function(){//write all of our JS in here
 			center: new google.maps.LatLng(0.0, 0.0),
 			zoom: 5,
 		};
-		var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+		var map = new google.maps.Map(document.getElementById("six"), mapProp);
 	}
 
 	
