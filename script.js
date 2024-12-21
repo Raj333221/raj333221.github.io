@@ -1,12 +1,12 @@
 window.onload=function(){//write all of our JS in here
-	alert("Welcome to My Site, under Construction !");}
+	alert("Welcome to My Site, under Construction !");};
 	
-	function addStyleSheet(){const el=document.querySelector("link");el.href="style.css";}
+	function addStyleSheet(){const el=document.querySelector("link");el.href="style.css";};
 
 	function testScript(){
 	const tl=document.querySelector(".testInput");
 	const para=document.querySelector("p");
-	para.innerHTML=tl.value;}
+	para.innerHTML=tl.value;};
 
 
 	function myMove(){
@@ -17,11 +17,11 @@ window.onload=function(){//write all of our JS in here
 		id=setInterval(frame, 5);
 		function frame(){
 		if(pos==350){
-		clearInterval(id);}
+		clearInterval(id);};
 		else{
 		pos++;
 		elem.style.top = pos + 'px';
-		elem.style.left = pos + 'px';}}}
+		elem.style.left = pos + 'px';};};};
 	function myMov(){
 		let id=null;
 		const elem=document.getElementById("anim");
@@ -149,13 +149,24 @@ window.onload=function(){//write all of our JS in here
 
 
 	
-	function initMap() {
-		var mapProp = {
-			center: new google.maps.LatLng(19.968545, 73.787522),
-			zoom: 5,
-		};
-		var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-	}
+	// function initMap() {
+	// 	var mapProp = {
+	// 		center: new google.maps.LatLng(19.968545, 73.787522),
+	// 		zoom: 5,
+	// 	};
+	// 	var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+	// }
+
+	let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("googleMap"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+}
+
+window.initMap = initMap;
 
 	
 	
