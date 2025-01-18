@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./logo.jpg" type="image/x-icon" style="border-radius:50%;">
+    <style>
+        body {
+            background-color: #121212; /* Dark background color */
+            color: white; /* Ensure text is readable on dark background */
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            width: 100%;
+            border-radius: 10% 10% 10% 10%;
+            background-color: rgba(0, 0, 0,0.15);
+        }
+        .navbar-brand {
+            font-size: 30px;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            text-shadow: 2px 2px 4px #000000;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            text-align: center;
+            opacity: 0.33;
+            pointer-events: none; /* Prevents the brand from blocking clicks */
+        }
+        .navbar-nav {
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .nav-link {
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        .navbar img {
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+        }
+        div {
+            overflow: hidden;
+            text-align: center;
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        #home, #about, #services, #contact {
+            background-color: #1e1e1e; /* Slightly lighter dark background for sections */
+        }
+        #home {
+            background-image: src('./home-background.jpg');
+            margin: 20px;
+            background-color: rgba(0, 0, 0,0.15);
+            padding: 20px 20px;
+            border: 1px solid white;
+            border-radius: 10% 10% 10% 10%;
+        }
+        #about {
+            background-image: src('./about-background.jpg');
+            margin: 20px;
+            background-color: rgba(0, 0, 0,0.15);
+            padding: 20px 20px;
+            border: 1px solid white;
+            border-radius: 10% 10% 10% 10%;
+        }
+        #services {
+            background-image: src('./services-background.jpg');
+            margin: 20px;
+            background-color: rgba(0, 0, 0,0.15);
+            padding: 20px 20px;
+            border: 1px solid white;
+            border-radius: 10% 10% 10% 10%;
+        }
+        #contact {
+            background-image: src('./contact-background.jpg');
+            margin: 20px;
+            background-color: rgba(0, 0, 0,0.15);
+            padding: 20px 20px;
+            border: 1px solid white;
+            border-radius: 10% 10% 10% 10%;
+        }
+        h1 {
+            border-radius: 5px 5px 5px 5px;
+            background-color: black;
+            font-size: 50px;
+            padding: 10px 10px;
+            color: white;
+            font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+        }
+        h2 {
+            font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+            border-radius: 5px 5px 5px 5px;
+            background-color: rgba(251, 6, 6, 0.15);
+            font-size: 30px;
+            padding: 10px 10px;
+            color: white;
+        }
+        h3 {
+            font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+            font-size: 30px;
+            color: white;
+        }
+        h4 {
+            font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+            font-size: 20px;
+            color: white;
+        }
+        h5 {
+            font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+            font-size: 15px;
+            color: white;
+        }
+        h6 {
+            font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+            font-size: 13px;
+            color: white;
+        }
+        a.disable-link {
+	        pointer-events: none;
+	        cursor: default;
+        }
+        .section {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding-top: 100px; /* Increase top margin for sections */
+            text-align: center; /* Center content horizontally */
+            flex-direction: column; /* Ensure content is stacked vertically */
+            justify-content: space-around; /* Evenly space content */
+        }
+        .section.active {
+            display: flex; /* Use flex to ensure content is evenly spaced */
+        }
+        .polygon, .thunder {
+            position: absolute;
+            top: -10px;
+            pointer-events: none;
+            animation: fall linear infinite;
+            transition: transform 0.2s;
+        }
+        .polygon {
+            background: white;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0.8;
+        }
+        .thunder {
+            background: yellow;
+            clip-path: polygon(50% 0%, 60% 30%, 90% 30%, 65% 50%, 75% 80%, 50% 60%, 25% 80%, 35% 50%, 10% 30%, 40% 30%);
+            opacity: 0.8;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(calc(100vh + 100%)); /* Ensure falling to the bottom of the page */
+            }
+        }
+        @keyframes flash {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        /* Feedback form styles */
+        .feedback-form {
+            position: fixed;
+            right: -300px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease;
+        }
+        .feedback-form.open {
+            right: 0;
+        }
+        .feedback-button {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 5px;
+            border-radius: 5px 0 0 5px;
+            cursor: pointer;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <a class="navbar-brand" href="#"><p>RAJ MADHEKAR</p></a>
+        <img src="./logo.jpg" alt="" width="50" height="50">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <div id="snowfall"></div>
+    <div id="home" class="parallax section active">
+        <h1>Welcome to My Profile</h1>
+        <br>
+        <h2>I'm a Full Stack WebApps Developer</h2>
+        <br>
+        <h3>I build websites from scratch using HTML5, CSS3 and JS</h3>
+        <br>
+        <h4>I make it device and user friendly using libraries and frameworks</h4>
+        <br>
+        <h5>I make it Responsive and Smooth by using libraries and frameworks like Bootstrap, React, Nodes, etc.</h5>
+    </div>
+    <br><br>
+    <div id="about" class="parallax section">
+        <h1>About My Background</h1>
+        <br>
+        <h2>I'm a Full Stack WebApps Developer</h2>
+        <br>
+        <h4>I completed my Graduation in 2022 with 69% Aggregate in Science</h4>
+        <br>
+        <h4>I completed my Higher Secondary Education in the year 2017 with 60% Aggregate in Science Trade</h4>
+        <br>
+        <h5>I completed my Secondary Education in the year 2012 with 67%</h5>
+        <br>
+        <h6>Language Proficiency: English, Hindi and Marathi with full Verbal and Written Efficiency</h6>
+    </div>
+    <br><br>
+    <div id="services" class="parallax section">
+        <h1>Services I can Provide</h1>
+        <br>
+        <h2>
+            <p>Development.Debugging.Deployment</p>
+        </h2>
+        <br>
+        <h4>I use HTML5, CSS3 and JS to Develop WebApps</h4>
+        <br>
+        <h4>I use Libraries and Frameworks like React.js, Node.js and Bootstrap5 for Responsiveness of my Apps</h4>
+        <br>
+        <h5>I integrate Python and MySQL for Database Management and Backend Development and Debugging</h5>
+        <br>
+        <h6>I use Cloud Services like Google Cloud, Amazon Cloud and Azure</h6>
+    </div>
+    <br><br>
+    <div id="contact" class="parallax section">
+        <h1>Contact Me</h1>
+        <br>
+        <h2>Phone
+            <h4>
+            <br>
+            <a href=“tel:9145333221” class=“disable-link”>
+                <td>Work</td>
+            </a>
+            <br>
+            <a href=“tel:8788582738” class=“disable-link”>
+               <td>Personal</td>
+            </a>
+            </h4>
+        </h2>
+        <br>
+        <h2>Emails
+            <h4>
+            <br>
+            <a href="mailto:rajratnamadhekar@gmail.com">Work</a>
+            <br>
+            <a href="mailto:rajmadhekar@gmail.com">Personal</a>
+            </h4>
+        </h2>
+        <br>
+        <h2>Social Media
+            <br><h4>
+            <td><a href="https://www.linkedin.com/in/raj-madhekar-7b0b3b1b1/">LinkedIn</a></td>
+            <td><a href="https://www.facebook.com/raj333221">Facebook</a></td>
+            <td><a href="https://www.instagram.com/raj333221">Instagram</a></td>
+            <td><a href="https://www.github.com/raj333221">Github</a></td>
+            </h4>
+        </h2>
+        <br>
+    </div>
+
+    <!-- Feedback button -->
+    <div class="feedback-button" onclick="toggleFeedbackForm()">Suggestions</div>
+
+    <!-- Feedback form -->
+    <div class="feedback-form" id="feedbackForm">
+        <h3>Suggestions</h3>
+        <form action="/submit-feedback" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                sections.forEach(section => section.classList.remove('active'));
+                const target = document.querySelector(this.getAttribute('href'));
+                target.classList.add('active');
+                window.scrollTo(0, 0); // Scroll to top to ensure section appears below nav bar
+            });
+        });
+
+        function createPolygon() {
+            const polygon = document.createElement('div');
+            polygon.classList.add('polygon');
+            polygon.style.left = Math.random() * window.innerWidth + 'px';
+            polygon.style.width = polygon.style.height = Math.random() * 10 + 5 + 'px';
+            polygon.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.getElementById('snowfall').appendChild(polygon);
+
+            setTimeout(() => {
+                polygon.remove();
+            }, 5000);
+        }
+
+        setInterval(createPolygon, 100);
+
+        document.addEventListener('mousemove', (e) => {
+            const polygons = document.querySelectorAll('.polygon');
+            polygons.forEach(polygon => {
+                const rect = polygon.getBoundingClientRect();
+                const dx = e.clientX - rect.left - rect.width / 2;
+                const dy = e.clientY - rect.top - rect.height / 2;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 100) {
+                    polygon.style.transform = `translate(${dx * 0.1}px, ${dy * 0.1}px)`;
+                }
+            });
+        });
+
+        function createThunder() {
+            const thunder = document.createElement('div');
+            thunder.classList.add('thunder');
+            thunder.style.left = Math.random() * window.innerWidth + 'px';
+            thunder.style.width = thunder.style.height = Math.random() * 10 + 5 + 'px';
+            thunder.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.getElementById('snowfall').appendChild(thunder);
+
+            setTimeout(() => {
+                thunder.remove();
+            }, 5000);
+        }
+
+        setInterval(createThunder, 100);
+
+        document.addEventListener('mousemove', (e) => {
+            const elements = document.querySelectorAll('.polygon, .thunder');
+            elements.forEach(element => {
+                const rect = element.getBoundingClientRect();
+                const dx = e.clientX - rect.left - rect.width / 2;
+                const dy = e.clientY - rect.top - rect.height / 2;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 100) {
+                    element.style.transform = `translate(${dx * 0.1}px, ${dy * 0.1}px)`;
+                }
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            const thunder = document.createElement('div');
+            thunder.classList.add('thunder');
+            thunder.style.left = e.clientX + 'px';
+            thunder.style.top = e.clientY + 'px';
+            thunder.style.width = thunder.style.height = '50px';
+            thunder.style.animation = 'flash 0.5s linear';
+            document.body.appendChild(thunder);
+
+            setTimeout(() => {
+                thunder.remove();
+            }, 500);
+        });
+
+        function toggleFeedbackForm() {
+            var form = document.getElementById('feedbackForm');
+            form.classList.toggle('open');
+        }
+    </script>
+    <script src="./script.js"></script>
+    
+  <script src="https://form.jotform.com/static/feedback2.js"></script>
+  <script>
+    var componentID = new JotformFeedback({
+      
+  type: 0,
+  width: 700,
+  height: 500,
+  fontColor: "#FFFFFF",
+  background: "#F59202",
+  isCardForm: false,
+  formId: "240108670655455"
+  ,
+      buttonText: "Feedback",
+      buttonSide: "left",
+      buttonAlign: "center",
+      base: "https://form.jotform.com/",
+    }).componentID;
+  </script>
+  <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+  <script>window.jotformEmbedHandler("iframe[id='" + componentID + "_iframe']", "https://form.jotform.com/")</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

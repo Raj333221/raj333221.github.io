@@ -1,0 +1,196 @@
+body {
+    background-color: #121212; /* Dark background color */
+    color: white; /* Ensure text is readable on dark background */
+    font-family: Arial, sans-serif;
+}
+nav {
+    width: 100%;
+    border-radius: 10% 10% 10% 10%;
+    background-color: rgba(0, 0, 0,0.15);
+}
+.navbar-brand {
+    font-size: 30px;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 4px #000000;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0.33;
+    pointer-events: none; /* Prevents the brand from blocking clicks */
+}
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.nav-link {
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+.navbar img {
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+div {
+    overflow: hidden;
+    text-align: center;
+}
+.parallax {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+#home, #about, #services, #contact {
+    background-color: #1e1e1e; /* Slightly lighter dark background for sections */
+}
+#home {
+    background-image: src('./home-background.jpg');
+    margin: 20px;
+    background-color: rgba(0, 0, 0,0.15);
+    padding: 20px 20px;
+    border: 1px solid white;
+    border-radius: 10% 10% 10% 10%;
+}
+#about {
+    background-image: src('./about-background.jpg');
+    margin: 20px;
+    background-color: rgba(0, 0, 0,0.15);
+    padding: 20px 20px;
+    border: 1px solid white;
+    border-radius: 10% 10% 10% 10%;
+}
+#services {
+    background-image: src('./services-background.jpg');
+    margin: 20px;
+    background-color: rgba(0, 0, 0,0.15);
+    padding: 20px 20px;
+    border: 1px solid white;
+    border-radius: 10% 10% 10% 10%;
+}
+#contact {
+    background-image: src('./contact-background.jpg');
+    margin: 20px;
+    background-color: rgba(0, 0, 0,0.15);
+    padding: 20px 20px;
+    border: 1px solid white;
+    border-radius: 10% 10% 10% 10%;
+}
+h1 {
+    border-radius: 5px 5px 5px 5px;
+    background-color: black;
+    font-size: 50px;
+    padding: 10px 10px;
+    color: white;
+    font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+}
+h2 {
+    font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+    border-radius: 5px 5px 5px 5px;
+    background-color: rgba(251, 6, 6, 0.15);
+    font-size: 30px;
+    padding: 10px 10px;
+    color: white;
+}
+h3 {
+    font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+    font-size: 30px;
+    color: white;
+}
+h4 {
+    font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+    font-size: 20px;
+    color: white;
+}
+h5 {
+    font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+    font-size: 15px;
+    color: white;
+}
+h6 {
+    font-family: 'Cursive', 'Comic Sans MS', 'Brush Script MT', sans-serif;
+    font-size: 13px;
+    color: white;
+}
+a.disable-link {
+    pointer-events: none;
+    cursor: default;
+}
+.section {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 100px; /* Increase top margin for sections */
+    text-align: center; /* Center content horizontally */
+    flex-direction: column; /* Ensure content is stacked vertically */
+    justify-content: space-around; /* Evenly space content */
+}
+.section.active {
+    display: flex; /* Use flex to ensure content is evenly spaced */
+}
+.polygon, .thunder {
+    position: absolute;
+    top: -10px;
+    pointer-events: none;
+    animation: fall linear infinite;
+    transition: transform 0.2s;
+}
+.polygon {
+    background: white;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    opacity: 0.8;
+}
+.thunder {
+    background: yellow;
+    clip-path: polygon(50% 0%, 60% 30%, 90% 30%, 65% 50%, 75% 80%, 50% 60%, 25% 80%, 35% 50%, 10% 30%, 40% 30%);
+    opacity: 0.8;
+}
+@keyframes fall {
+    to {
+        transform: translateY(calc(100vh + 100%)); /* Ensure falling to the bottom of the page */
+    }
+}
+@keyframes flash {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+/* Feedback form styles */
+.feedback-form {
+    position: fixed;
+    right: -300px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+}
+.feedback-form.open {
+    right: 0;
+}
+.feedback-button {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 5px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+}
